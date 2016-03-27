@@ -2,7 +2,10 @@
 ## functions do
 
 ## this is function that takes a matrix to be pass to another function and hold the inverted 
-akeCacheMatrix <- function(x=matrix())
+## matrix value.  The function create a list to hold and set value.
+
+
+MakeCacheMatrix <- function(x=matrix())
 
   { 
   answer <- NULL
