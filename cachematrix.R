@@ -1,15 +1,40 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
+## this is function that takes a matrix to be pass to another function and hold the inverted 
+akeCacheMatrix <- function(x=matrix())
 
-makeCacheMatrix <- function(x = matrix()) {
-
+  { 
+  answer <- NULL
+  set <- function(y) 
+  {   
+    x <<- y
+    answer <<- NULL
+  }
+  
+  get <- function() x
+  setinvert <- function(invt) answer <<- invt
+  getinvert <- function() answer
+  list(set=set, get=get,
+       setinvert=setinvert,
+       getinvert=getinvert)
 }
 
+## This function will check if makeCacheMatrix has a already a cache inverted matrix
+##(answer).  If it doesn't have a cached value, it will calculate the inversion value of 
+## X and cache it in makeCacheMatrix for later retrival
 
-## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+cacheSolve <- function(x,...)
+{
+  answer <- x$getinvert()
+  if(!is.null(answer)) {
+    
+    message("getting cached data")
+    return(answer)
+  }
+  
+  data <- x$get()
+  answer <- solve(data,...)
+  x$setinvert(answer)
+  answer
 }
